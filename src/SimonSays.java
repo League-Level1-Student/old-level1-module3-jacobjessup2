@@ -48,14 +48,14 @@ public class SimonSays extends KeyAdapter {
 		// 15. Make a points variable to track the score.
 		int points = 0;
 		// 16. If the keyCode matches the imageIndex and "Simon says"
-		if (simonSays == true && keyCode == imageIndex) {
+		if (simonSays == true && e.getKeyCode() == imageIndex) {
 			// 17. Increase the value of score
 			points++;
 			// 18. Use the speak method to tell the user they were correct
 			speak("You were correct");
 		}
 		// 19. If the keyCode doesn't match the imageIndex and "Simon didn't say..."
-		if (simonSays == false) {
+		if (simonSays == false && e.getKeyCode() == imageIndex) {
 			// 20. Increase the value of score
 			points++;
 			// 21. Use the speak method to tell the user they were correct
