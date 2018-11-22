@@ -55,7 +55,7 @@ public class SimonSays extends KeyAdapter {
 			speak("You were correct");
 		}
 		// 19. If the keyCode doesn't match the imageIndex and "Simon didn't say..."
-		if (simonSays == false && e.getKeyCode() == imageIndex) {
+		if (simonSays == false && e.getKeyCode() != imageIndex) {
 			// 20. Increase the value of score
 			points++;
 			// 21. Use the speak method to tell the user they were correct
