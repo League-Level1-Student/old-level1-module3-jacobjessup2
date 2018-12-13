@@ -42,7 +42,7 @@ private void start() {
 
 @Override
 public void actionPerformed(ActionEvent arg0) {
-	System.out.println("something");
+	
 JButton buttonPressed = (JButton) arg0.getSource();	
 
 	if(buttonPressed == trick) {
