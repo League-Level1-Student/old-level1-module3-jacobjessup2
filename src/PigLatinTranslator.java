@@ -36,6 +36,7 @@ public class PigLatinTranslator implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		JButton ButtonPressed = (JButton) e.getSource();
 		
 	}
 	
