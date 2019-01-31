@@ -1,5 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import java.util.Random;
 
 import javax.swing.*;
@@ -10,23 +11,24 @@ public class WhackAMole implements ActionListener {
 		c.createUI();
 		c.drawButtons();
 	}
-	
+	//put date at start
 	Random rand = new Random();
 	int mole;
+	int whacked;
 JFrame frame = new JFrame("Whack-A-Button");
 JPanel panel = new JPanel();
-JButton button1 = new JButton("empty");	
-JButton button2 = new JButton("empty");	
-JButton button3 = new JButton("empty");	
-JButton button4 = new JButton("empty");	
-JButton button5 = new JButton("empty");	
-JButton button6 = new JButton("empty");	
-JButton button7 = new JButton("empty");	
-JButton button8 = new JButton("empty");	
-JButton button9 = new JButton("empty");	
-JButton button10 = new JButton("empty");	
-JButton button11 = new JButton("empty");	
-JButton button12 = new JButton("empty");	
+JButton button1 = new JButton("");	
+JButton button2 = new JButton("");	
+JButton button3 = new JButton("");	
+JButton button4 = new JButton("");	
+JButton button5 = new JButton("");	
+JButton button6 = new JButton("");	
+JButton button7 = new JButton("");	
+JButton button8 = new JButton("");	
+JButton button9 = new JButton("");	
+JButton button10 = new JButton("");	
+JButton button11 = new JButton("");	
+JButton button12 = new JButton("");	
 
 void createUI() {
 	frame.setVisible(true);
@@ -45,6 +47,29 @@ void createUI() {
 	panel.add(button11);
 	panel.add(button12);
 	button1.addActionListener(this);
+	button2.addActionListener(this);
+	button3.addActionListener(this);
+	button4.addActionListener(this);
+	button5.addActionListener(this);
+	button6.addActionListener(this);
+	button7.addActionListener(this);
+	button8.addActionListener(this);
+	button9.addActionListener(this);
+	button10.addActionListener(this);
+	button11.addActionListener(this);
+	button12.addActionListener(this);
+	button1.setText("empty");
+	button2.setText("empty");
+	button3.setText("empty");
+	button4.setText("empty");
+	button5.setText("empty");
+	button6.setText("empty");
+	button7.setText("empty");
+	button8.setText("empty");
+	button9.setText("empty");
+	button10.setText("empty");
+	button11.setText("empty");
+	button12.setText("empty");
 }
 
 void drawButtons() {
@@ -97,13 +122,6 @@ void drawButtons() {
 	}
 	
 	
-	
-
-
-
-
-
-
 
 }
 
@@ -115,14 +133,41 @@ void speak(String words) {
     }
 }
 
+private void endGame(Date timeAtStart, int molesWhacked) {
+    Date timeAtEnd = new Date();
+    JOptionPane.showMessageDialog(null, "Your whack rate is "
+         + ((timeAtEnd.getTime() - timeAtStart.getTime()) / 1000.00 / molesWhacked)
+         + " moles per second.");
+}
+
 @Override
 public void actionPerformed(ActionEvent arg0) {
 	JButton buttonPressed = (JButton) arg0.getSource();
+	
 	if(buttonPressed.getText().equals("empty")) {
+	
 		speak("That's not a mole");
-		
+		frame.dispose();
+		createUI();
+		drawButtons();
 		
 	}
+
+	if(buttonPressed.getText().equals("MOLE!")) {
+		
+		
+		speak("oof");
+		frame.dispose();
+		createUI();
+		drawButtons();
+		whacked++;
+		if(whacked == 9) {
+			endGame(whacked);
+		}
+	}
+	
+	
+	
 }
 
 
