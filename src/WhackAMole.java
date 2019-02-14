@@ -10,10 +10,13 @@ public class WhackAMole implements ActionListener {
 		WhackAMole c = new WhackAMole();
 		c.createUI();
 		c.drawButtons();
+		c.createUI2();
 	}
-	//put date at start
+	//to-do put date at start
+	Date time = new Date();
 	Random rand = new Random();
 	int mole;
+	int miss;
 	int whacked;
 JFrame frame = new JFrame("Whack-A-Button");
 JPanel panel = new JPanel();
@@ -46,18 +49,6 @@ void createUI() {
 	panel.add(button10);
 	panel.add(button11);
 	panel.add(button12);
-	button1.addActionListener(this);
-	button2.addActionListener(this);
-	button3.addActionListener(this);
-	button4.addActionListener(this);
-	button5.addActionListener(this);
-	button6.addActionListener(this);
-	button7.addActionListener(this);
-	button8.addActionListener(this);
-	button9.addActionListener(this);
-	button10.addActionListener(this);
-	button11.addActionListener(this);
-	button12.addActionListener(this);
 	button1.setText("empty");
 	button2.setText("empty");
 	button3.setText("empty");
@@ -70,6 +61,21 @@ void createUI() {
 	button10.setText("empty");
 	button11.setText("empty");
 	button12.setText("empty");
+}
+
+void createUI2() {
+	button1.addActionListener(this);
+	button2.addActionListener(this);
+	button3.addActionListener(this);
+	button4.addActionListener(this);
+	button5.addActionListener(this);
+	button6.addActionListener(this);
+	button7.addActionListener(this);
+	button8.addActionListener(this);
+	button9.addActionListener(this);
+	button10.addActionListener(this);
+	button11.addActionListener(this);
+	button12.addActionListener(this);
 }
 
 void drawButtons() {
@@ -146,23 +152,48 @@ public void actionPerformed(ActionEvent arg0) {
 	
 	if(buttonPressed.getText().equals("empty")) {
 	
-		speak("That's not a mole");
-		frame.dispose();
+		speak("Miss");
+		frame.remove(panel);
+		panel=new JPanel();
 		createUI();
 		drawButtons();
+		miss++;
 		
+		if(miss == 1) {
+			JOptionPane.showMessageDialog(null, "It's only one miss! You still got this!");
+		}
+		
+		if(miss == 2) {
+			JOptionPane.showMessageDialog(null, "You're still in this");
+		}
+		
+		if(miss == 3) {
+			JOptionPane.showMessageDialog(null, "Keep trying...");
+		}
+		
+		if(miss == 4) {
+			JOptionPane.showMessageDialog(null, "...");
+		}
+		
+		if(miss == 5) {
+			JOptionPane.showMessageDialog(null, "You Lose...");
+			System.exit(0);
+		}
 	}
 
 	if(buttonPressed.getText().equals("MOLE!")) {
 		
 		
-		speak("oof");
-		frame.dispose();
+		speak("Hit");
+		frame.remove(panel);
+		panel=new JPanel();
 		createUI();
 		drawButtons();
 		whacked++;
-		if(whacked == 9) {
-			endGame(whacked);
+		if(whacked == 10) {
+			JOptionPane.showMessageDialog(null, "You Win!");
+			endGame(time,whacked);
+			System.exit(0);
 		}
 	}
 	
