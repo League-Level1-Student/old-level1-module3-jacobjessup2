@@ -1,3 +1,4 @@
+import java.applet.AudioClip;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
@@ -146,6 +147,11 @@ private void endGame(Date timeAtStart, int molesWhacked) {
          + " moles per second.");
 }
 
+private void playSound(String fileName) {
+    AudioClip sound = JApplet.newAudioClip(getClass().getResource(fileName));
+    sound.play();
+}
+
 @Override
 public void actionPerformed(ActionEvent arg0) {
 	JButton buttonPressed = (JButton) arg0.getSource();
@@ -184,7 +190,7 @@ public void actionPerformed(ActionEvent arg0) {
 	if(buttonPressed.getText().equals("MOLE!")) {
 		
 		
-		speak("Hit");
+		playSound("moo.wav");
 		frame.remove(panel);
 		panel=new JPanel();
 		createUI();
