@@ -37,6 +37,7 @@ public static void main(String[] args) {
 	int slot1;
 	int slot2;
 	int slot3;
+	int winCounter = 0;
 	
 	void createUI () throws Exception{
 		cherry =  new ImageIcon(ImageIO.read(this.getClass().getResourceAsStream("Cherry.jpeg")));
@@ -94,6 +95,21 @@ public static void main(String[] args) {
 		 label3.setIcon(strawberry);
 	 	}
 	 
+	 //You win thing
+	 	if (slot1 == 0 && slot2 == 0 && slot3 == 0) {
+	 		winCounter++;
+	 		JOptionPane.showMessageDialog(null, "You Win, Your Score is " + winCounter);
+	 	}
+	 	
+	 	if (slot1 == 1 && slot2 == 1 && slot3 == 1) {
+	 		winCounter++;
+	 		JOptionPane.showMessageDialog(null, "You Win, Your Score is " + winCounter);
+	 	}
+	 	
+	 	if (slot1 == 2 && slot2 == 2 && slot3 == 2) {
+	 		winCounter++;
+	 		JOptionPane.showMessageDialog(null, "You Win, Your Score is " + winCounter);
+	 	}
  }
 	
 	@Override
@@ -104,7 +120,7 @@ public static void main(String[] args) {
 			try {
 				SPIN();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 		}
