@@ -9,6 +9,7 @@ int upperPipeX = 400;
 int lowerPipeX = 400;
 int upperPipeHeight = (int) random (100, 400);
 int lowerPipeHeight = upperPipeHeight+(int) random (125,200);
+int score;
 void setup(){
 size(500,500);
 }
@@ -37,8 +38,17 @@ if(intersectsPipes() == true){
 gravity = 0;
 birdYVelocity = 0;
 pipeMovement = 0;
+fill(0,0,255);
 text("Game Over", 250,250);
   }
+  
+  //Score
+  fill(0,0,255);
+  text(score, 450,50);
+  if(upperPipeX == 100){
+  score++;
+  }
+  
 }
 
 void teleportUpperPipe(){
