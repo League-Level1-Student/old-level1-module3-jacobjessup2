@@ -2,8 +2,7 @@
 int frogX = 400;
 int frogY = 500;
 int jump = 70;
-int carX;
-int carY;
+
 
 void draw(){
 background(0,100,100);
@@ -66,7 +65,25 @@ frogY=25;
 }
 
 
-void Car(){
+class Car{
+int carY;
+int carX;
+int carSpeed;
+int carSize;
+
+
+Car(int carY, int carX, int carSpeed, int carSize){
+  this.carY = carY;
+  this.carX = carX;
+  this.carSpeed = carSpeed;
+  this.carSize = carSize;
+  }
+
+void display() {
+fill(0,255,0);
+rect(carX, carY, carSize, 50);
+}
+
 
 
 }
