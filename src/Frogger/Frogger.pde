@@ -1,4 +1,5 @@
-
+Car car1 = new Car(50, 400, 4, 75);
+Car car2 = new Car(500, 550, 2, 75);
 int frogX = 400;
 int frogY = 500;
 int jump = 70;
@@ -8,7 +9,10 @@ void draw(){
 background(0,100,100);
 //frog
 fill(0,255,0);
-ellipse(frogX,frogY,50,50);
+ellipse(frogX,frogY,25,25);
+
+car1.display();
+car2.display();
 
 
 
@@ -18,8 +22,6 @@ ellipse(frogX,frogY,50,50);
 
 void setup(){
 size(800,600);
-
-
 }
 
 
@@ -64,7 +66,7 @@ frogY=25;
   }
 }
 
-
+//car stuff
 class Car{
 int carY;
 int carX;
@@ -82,8 +84,10 @@ Car(int carY, int carX, int carSpeed, int carSize){
 void display() {
 fill(0,255,0);
 rect(carX, carY, carSize, 50);
-}
+  }
 
-
+void moveLeft(){
+carX = carX - carSpeed;
+  }
 
 }
