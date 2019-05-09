@@ -1,5 +1,6 @@
-Car car1 = new Car(50, 400, 4, 75);
-Car car2 = new Car(500, 550, 2, 75);
+Car car1 = new Car(50, 400, 8, 75);
+Car car2 = new Car(500, 550, 10, 75);
+Car car3 = new Car(250, 50, 20, 75);
 int frogX = 400;
 int frogY = 500;
 int jump = 70;
@@ -12,9 +13,15 @@ fill(0,255,0);
 ellipse(frogX,frogY,25,25);
 
 car1.display();
+car1.moveLeft();
+
+
+
 car2.display();
+car2.moveLeft();
 
-
+car3.display();
+car3.moveRight();
 
 
  boundaries();
@@ -74,6 +81,19 @@ int carSpeed;
 int carSize;
 
 
+
+boolean intersects(Car car) {
+      if ((frogY > car.getY() && frogY < car.getY()+50) && (frogX > car.getX() && frogX < car.getX()+car.getSize()))
+      {
+             return true;
+      }
+      else 
+      {
+             return false;
+      }
+}
+
+
 Car(int carY, int carX, int carSpeed, int carSize){
   this.carY = carY;
   this.carX = carX;
@@ -82,12 +102,39 @@ Car(int carY, int carX, int carSpeed, int carSize){
   }
 
 void display() {
-fill(0,255,0);
+fill(255,0,0);
 rect(carX, carY, carSize, 50);
   }
+  
+  
+int getX(){
+return carX;
+}
+
+int getY(){
+return carY;
+}
+
+int getSize(){
+return carSize;
+}
+
+
 
 void moveLeft(){
 carX = carX - carSpeed;
+if(carX<-50){
+  carX = 900;
+    }
+  }
+
+
+
+void moveRight(){
+carX = carX + carSpeed;
+if(carX>850){
+  carX = -100;
+    }
   }
 
 }
